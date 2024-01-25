@@ -1,21 +1,36 @@
 import cv2
-from process import color
-from process import helper
+import numpy as np
+import color
 
 
-def detect(cwd: str):
-    image = cv2.imread(f"{cwd}\\input\\fp1.jpg")
+def detect(input: str = "input/fp1.png", output: str = "output/out.png", debug=False):
+    image = cv2.imread(input)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    blurred = cv2.GaussianBlur(gray, (7, 7), 0)
-    edges = cv2.Canny(blurred, 100, 150)
+    threshold_value = 100  # Discard light strokes (doors, furniture)
+    _, binary_image = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
 
-    # Size of kernel affects the dilation. Setting it to `None` detects outermost boundary of house
-    dilated = cv2.dilate(edges, (1, 1), iterations=1)  # type: ignore
+    # Single pixel morphological erosion
+    kernel = np.ones((3, 3), np.uint8)
+    edges = binary_image - cv2.erode(binary_image, kernel)  # type: ignore
 
     # Find and draw contours in the dilated image
-    contours, _ = cv2.findContours(dilated.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    im_copy = edges.copy()  # cv2.findContours is destructive
+    contours, _ = cv2.findContours(im_copy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     result_image = image.copy()
-    cv2.drawContours(result_image, contours, -1, color.MAGENTA, 2)
+    if debug is True:
+        cv2.drawContours(result_image, contours, -1, color.MAGENTA, 2)
+
+    vertices = []
+    for contour in contours:
+        epsilon = 0.001 * cv2.arcLength(contour, True)
+        approx = cv2.approxPolyDP(contour, epsilon, True)
+        vertices.extend(approx)
+
+    for vertex in vertices:
+        x, y = vertex.ravel()
+        cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
+        if debug is True:
+            cv2.putText(result_image, f"({x}, {y})", (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color.MAGENTA, 2)
 
     # Overlay
     cv2.imshow("Detected Edges", result_image)
@@ -23,5 +38,7 @@ def detect(cwd: str):
     cv2.destroyAllWindows()
 
     # Save
-    # base_name = helper.remove_extension(filename)
-    cv2.imwrite(f"{cwd}\\output\\fp1-edge.png", result_image)
+    cv2.imwrite(output, result_image)
+
+
+detect()
