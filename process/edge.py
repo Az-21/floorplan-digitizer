@@ -9,9 +9,13 @@ def detect(input: str = "input/fp1.png", output: str = "output/out.png", debug=F
     threshold_value = 100  # Discard light strokes (doors, furniture)
     _, binary_image = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
 
+    # Reduce the thickness of walls
+    kernel = np.ones((3, 3), np.uint8)
+    reduced_thickness = cv2.dilate(binary_image, kernel, iterations=5)
+
     # Single pixel morphological erosion
     kernel = np.ones((3, 3), np.uint8)
-    edges = binary_image - cv2.erode(binary_image, kernel)  # type: ignore
+    edges = reduced_thickness - cv2.erode(reduced_thickness, kernel)  # type: ignore
 
     # Find and draw contours in the dilated image
     im_copy = edges.copy()  # cv2.findContours is destructive
