@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
-import color
+from . import color
 
 
-def detect(input: str = "input/fp1.png", output: str = "output/out.png", debug=False):
+def detect(input, output, debug=False):
     image = cv2.imread(input)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     threshold_value = 100  # Discard light strokes (doors, furniture)
@@ -43,6 +43,3 @@ def detect(input: str = "input/fp1.png", output: str = "output/out.png", debug=F
 
     # Save
     cv2.imwrite(output, result_image)
-
-
-detect()
