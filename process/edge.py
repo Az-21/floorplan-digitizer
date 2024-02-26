@@ -9,6 +9,7 @@ def detect(
     threshold_value=100,
     thickness_reduction_iterations=5,
     debug=False,
+    debug_vertex_position=False,
 ):
     # Read image
     image = cv2.imread(input)
@@ -31,8 +32,6 @@ def detect(
     im_copy = edges.copy()  # cv2.findContours is destructive
     contours, _ = cv2.findContours(im_copy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     result_image = image.copy()
-    if debug is True:
-        cv2.drawContours(result_image, contours, -1, color.MAGENTA, 2)
 
     vertices = []
     for contour in contours:
@@ -43,7 +42,7 @@ def detect(
     for vertex in vertices:
         x, y = vertex.ravel()
         cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
-        if debug is True:
+        if debug_vertex_position is True:
             cv2.putText(result_image, f"({x}, {y})", (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color.MAGENTA, 2)
 
     # Overlay
