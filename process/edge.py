@@ -3,7 +3,12 @@ import numpy as np
 from . import color
 
 
-def detect(input, output, threshold_value=100, debug=False):
+def detect(
+    input,
+    output,
+    threshold_value=100,
+    debug=False,
+):
     # Read image
     image = cv2.imread(input)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
