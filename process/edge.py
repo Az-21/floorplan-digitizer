@@ -17,12 +17,14 @@ def detect(
 
     # Convert image to binary | Threshold value is used to discard light strokes (doors, furniture)
     _, binary_image = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
-    cv2.imshow(f"[DEBUG] Binary Image | Threshold Value = {threshold_value}", binary_image)
+    if debug:
+        cv2.imshow(f"[DEBUG] Binary Image | Threshold Value = {threshold_value}", binary_image)
 
     # Reduce the thickness of walls
     kernel = np.ones((3, 3), np.uint8)
     reduced_thickness = cv2.dilate(binary_image, kernel, iterations=thickness_reduction_iterations)
-    cv2.imshow(f"[DEBUG] Reduced Thickness | Iterations = {thickness_reduction_iterations}", reduced_thickness)
+    if debug:
+        cv2.imshow(f"[DEBUG] Reduced Thickness | Iterations = {thickness_reduction_iterations}", reduced_thickness)
 
     # Single pixel morphological erosion (edge detection)
     kernel = np.ones((3, 3), np.uint8)
@@ -43,8 +45,9 @@ def detect(
     # Plot vertices of the image on the original, unmodified image
     for vertex in vertices:
         x, y = vertex.ravel()
-        cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
-        if debug_vertex_position is True:
+        if debug:
+            cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
+        if debug and debug_vertex_position is True:
             cv2.putText(result_image, f"({x}, {y})", (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color.MAGENTA, 2)
 
     # Overlay
