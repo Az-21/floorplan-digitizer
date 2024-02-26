@@ -3,11 +3,12 @@ import numpy as np
 from . import color
 
 
-def detect(input, output, debug=False):
-    # Convert image to binary
+def detect(input, output, threshold_value=100, debug=False):
+    # Read image
     image = cv2.imread(input)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    threshold_value = 100  # Discard light strokes (doors, furniture)
+
+    # Convert image to binary | Threshold value is used to discard light strokes (doors, furniture)
     _, binary_image = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
 
     # Reduce the thickness of walls
