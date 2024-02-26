@@ -10,6 +10,7 @@ def detect(input, output, threshold_value=100, debug=False):
 
     # Convert image to binary | Threshold value is used to discard light strokes (doors, furniture)
     _, binary_image = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
+    cv2.imshow(f"[DEBUG] Binary Image | Threshold Value = {threshold_value}", binary_image)
 
     # Reduce the thickness of walls
     kernel = np.ones((3, 3), np.uint8)
