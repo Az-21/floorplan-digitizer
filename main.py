@@ -1,4 +1,3 @@
-import os
 from process import edge
 from process import merge
 
