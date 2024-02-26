@@ -45,9 +45,9 @@ def detect(
     # Plot vertices of the image on the original, unmodified image
     for vertex in vertices:
         x, y = vertex.ravel()
+        cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
         if debug:
             cv2.imshow("Detected Edges", result_image)
-            cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
         if debug and debug_vertex_position is True:
             cv2.putText(result_image, f"({x}, {y})", (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color.MAGENTA, 2)
 
