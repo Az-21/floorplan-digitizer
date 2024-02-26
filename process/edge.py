@@ -4,6 +4,7 @@ from . import color
 
 
 def detect(input, output, debug=False):
+    # Convert image to binary
     image = cv2.imread(input)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     threshold_value = 100  # Discard light strokes (doors, furniture)
@@ -13,7 +14,7 @@ def detect(input, output, debug=False):
     kernel = np.ones((3, 3), np.uint8)
     reduced_thickness = cv2.dilate(binary_image, kernel, iterations=5)
 
-    # Single pixel morphological erosion
+    # Single pixel morphological erosion (edge detection)
     kernel = np.ones((3, 3), np.uint8)
     edges = reduced_thickness - cv2.erode(reduced_thickness, kernel)  # type: ignore
 
