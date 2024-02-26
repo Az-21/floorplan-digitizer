@@ -7,6 +7,7 @@ def detect(
     input,
     output,
     threshold_value=100,
+    thickness_reduction_iterations=5,
     debug=False,
 ):
     # Read image
@@ -19,7 +20,7 @@ def detect(
 
     # Reduce the thickness of walls
     kernel = np.ones((3, 3), np.uint8)
-    reduced_thickness = cv2.dilate(binary_image, kernel, iterations=5)
+    reduced_thickness = cv2.dilate(binary_image, kernel, iterations=thickness_reduction_iterations)
 
     # Single pixel morphological erosion (edge detection)
     kernel = np.ones((3, 3), np.uint8)
