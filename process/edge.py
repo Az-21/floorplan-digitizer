@@ -60,4 +60,7 @@ def detect(
     cv2.imwrite(output, result_image)
 
     # Return list containing the coordinates of the vertices
-    return vertices
+    coordinates = []
+    for vertex in vertices:
+        coordinates.append(vertex[0])
+    return coordinates
