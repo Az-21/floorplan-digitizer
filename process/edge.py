@@ -58,3 +58,6 @@ def detect(
 
     # Save image
     cv2.imwrite(output, result_image)
+
+    # Return list containing the coordinates of the vertices
+    return vertices
