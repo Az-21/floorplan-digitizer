@@ -46,14 +46,15 @@ def detect(
     for vertex in vertices:
         x, y = vertex.ravel()
         if debug:
+            cv2.imshow("Detected Edges", result_image)
             cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
         if debug and debug_vertex_position is True:
             cv2.putText(result_image, f"({x}, {y})", (x + 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color.MAGENTA, 2)
 
-    # Overlay
-    cv2.imshow("Detected Edges", result_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # Optionally wait for user input if debug is enabled
+    if debug:
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
-    # Save
+    # Save image
     cv2.imwrite(output, result_image)
