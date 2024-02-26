@@ -33,12 +33,14 @@ def detect(
     contours, _ = cv2.findContours(im_copy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     result_image = image.copy()
 
+    # Find vertices of the image
     vertices = []
     for contour in contours:
         epsilon = 0.001 * cv2.arcLength(contour, True)
         approx = cv2.approxPolyDP(contour, epsilon, True)
         vertices.extend(approx)
 
+    # Plot vertices of the image on the original, unmodified image
     for vertex in vertices:
         x, y = vertex.ravel()
         cv2.circle(result_image, (x, y), 3, color.MAGENTA, -1)
