@@ -8,6 +8,7 @@ def detect_walls(
   output,
   threshold_value=100,
   thickness_reduction_iterations=5,
+  thickness_increase_iterations=3,
   debug=False,
 ):
   # Read image
@@ -19,10 +20,11 @@ def detect_walls(
   if debug:
     cv2.imshow(f"[DEBUG] Binary Image | Threshold Value = {threshold_value}", binary_image)
 
-  # Reduce the thickness of walls
+  # Reduce the thickness of walls -> Then increase it to remove redundant objects
   kernel = np.ones((3, 3), np.uint8)
   reduced_thickness = cv2.dilate(binary_image, kernel, iterations=thickness_reduction_iterations)
-  cv2.imwrite(output, reduced_thickness)
+  increased_thickness = cv2.erode(reduced_thickness, kernel, iterations=thickness_increase_iterations)
+  cv2.imwrite(output, increased_thickness)
 
 
 def generate_wall_svg(input, output, scale=1):
