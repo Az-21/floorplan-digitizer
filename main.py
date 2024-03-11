@@ -1,4 +1,4 @@
-from process import edge, merge, svg
+from process import edge, merge, svg, blender
 from utility import path, save
 
 
