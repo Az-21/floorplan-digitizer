@@ -27,7 +27,7 @@ def detect_walls(
   cv2.imwrite(output, increased_thickness)
 
 
-def generate_wall_svg(input, output, scale=1):
+def generate_wall_svg(input, output, scale=2):
   # Open the binary image
   with Image.open(input) as img:
     # Create SVG header
