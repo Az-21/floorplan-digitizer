@@ -1,14 +1,15 @@
 import os
+from dataclasses import dataclass
 
 
+@dataclass(frozen=True)
 class IO:
-  def __init__(self, input, raw_vertices, merged_vertices, coordinates, walls, walls_svg):
-    self.input = input
-    self.raw_vertices = raw_vertices
-    self.merged_vertices = merged_vertices
-    self.coordinates = coordinates
-    self.walls = walls
-    self.walls_svg = walls_svg
+  input: str
+  raw_vertices: str
+  merged_vertices: str
+  coordinates: str
+  walls: str
+  walls_svg: str
 
 
 def io(filename):
