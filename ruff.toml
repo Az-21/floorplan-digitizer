@@ -1,5 +1,6 @@
 line-length = 120
 indent-width = 2
+target-version = "312"
 
 [format]
 quote-style = "double"
