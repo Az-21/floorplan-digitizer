@@ -1,10 +1,11 @@
 from process import edge, merge, svg
-from utility import path, save
+from utility import save
+import config.location as location
 
 
 def main():
   filename = "fp1.png"
-  io = path.io(filename)
+  io: location.IO = location.generate_io_paths(filename)
 
   # Vertex detection
   vertices = edge.detect(io.input, io.raw_vertices)

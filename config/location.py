@@ -12,7 +12,7 @@ class IO:
   walls_svg: str
 
 
-def io(filename):
+def generate_io_paths(filename):
   # Generate input path
   input = f"input/{filename}"
 
