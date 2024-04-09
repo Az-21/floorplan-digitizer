@@ -19,7 +19,7 @@ def generate_io_paths(filename):
 
   # Generate outputs | Always save as .PNG
   base, _ = os.path.splitext(filename)  # Discard extension
-  clean_background = f"output/{base}/clean-background.png"
+  clean_background = f"output/{base}/clean-background.bmp"
   raw_vertices = f"output/{base}/raw-vertices.png"
   merged_vertices = f"output/{base}/merged-vertices.png"
   coordinates = f"output/{base}/vertex-coordinates.txt"
