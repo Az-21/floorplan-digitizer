@@ -1,3 +1,4 @@
+import blender.blender as blender
 import clean.background
 import config.config as cfg
 import config.location as location
@@ -23,6 +24,9 @@ def main():
   # Trace as SVG
   clean.background.run(io, config)
   postprocess.svg.trace(io, config)
+
+  # Generate Blender action script
+  blender.generate_bpy_script(io)
 
 
 if __name__ == "__main__":
