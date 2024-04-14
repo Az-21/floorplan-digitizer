@@ -1,30 +1,30 @@
 import cv2
 import numpy as np
+from config.config import Config
+from config.location import IO
 from . import color
 
 
 def detect(
-  input,
-  output,
-  threshold_value=100,
-  thickness_reduction_iterations=5,
+  io: IO,
+  config: Config,
   debug=False,
   debug_vertex_position=False,
 ):
   # Read image
-  image = cv2.imread(input)
+  image = cv2.imread(io.input)
   gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
   # Convert image to binary | Threshold value is used to discard light strokes (doors, furniture)
-  _, binary_image = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
+  _, binary_image = cv2.threshold(gray, config.threshold_value, 255, cv2.THRESH_BINARY)
   if debug:
-    cv2.imshow(f"[DEBUG] Binary Image | Threshold Value = {threshold_value}", binary_image)
+    cv2.imshow(f"[DEBUG] Binary Image | Threshold Value = {config.threshold_value}", binary_image)
 
   # Reduce the thickness of walls
   kernel = np.ones((3, 3), np.uint8)
-  reduced_thickness = cv2.dilate(binary_image, kernel, iterations=thickness_reduction_iterations)
+  reduced_thickness = cv2.dilate(binary_image, kernel, iterations=config.thickness_reduction_iterations)
   if debug:
-    cv2.imshow(f"[DEBUG] Reduced Thickness | Iterations = {thickness_reduction_iterations}", reduced_thickness)
+    cv2.imshow(f"[DEBUG] Reduced Thickness | Iterations = {config.thickness_reduction_iterations}", reduced_thickness)
 
   # Single pixel morphological erosion (edge detection)
   kernel = np.ones((3, 3), np.uint8)
@@ -57,7 +57,7 @@ def detect(
     cv2.destroyAllWindows()
 
   # Save image
-  cv2.imwrite(output, result_image)
+  cv2.imwrite(io.raw_vertices, result_image)
 
   # Return list containing the coordinates of the vertices
   coordinates = []

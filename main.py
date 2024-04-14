@@ -17,7 +17,7 @@ def main():
   location.generate_output_folder(config.filename)
 
   # Vertex detection
-  vertices = edge.detect(io.input, io.raw_vertices)
+  vertices = edge.detect(io, config)
   merged_vertices = merge.close_vertices(io.input, io.merged_vertices, vertices, epsilon=12)
   save.vertices_as_txt(io.coordinates, merged_vertices)
 
