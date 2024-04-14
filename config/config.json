@@ -1,0 +1,8 @@
+{
+  "filename": "fp.png",
+  "threshold_value": 100,
+  "thickness_reduction_iterations": 5,
+  "thickness_increase_iterations": 3,
+  "potrace_path": "potrace/exe/path/here",
+  "typst_path": "typst/exe/path/here"
+}
