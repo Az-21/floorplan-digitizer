@@ -10,8 +10,6 @@ class IO:
   raw_vertices: str
   merged_vertices: str
   coordinates: str
-  walls: str
-  walls_svg: str
 
 
 def generate_io_paths(filename):
@@ -25,8 +23,6 @@ def generate_io_paths(filename):
   raw_vertices = f"output/{base}/raw-vertices.png"
   merged_vertices = f"output/{base}/merged-vertices.png"
   coordinates = f"output/{base}/vertex-coordinates.txt"
-  walls = f"output/{base}/eroded-walls.png"
-  walls_svg = f"output/{base}/eroded-walls.svg"
 
   # Return as object
   return IO(
@@ -36,8 +32,6 @@ def generate_io_paths(filename):
     raw_vertices,
     merged_vertices,
     coordinates,
-    walls,
-    walls_svg,
   )
 
 
