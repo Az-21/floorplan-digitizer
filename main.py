@@ -1,17 +1,17 @@
 import clean.background
 import config.location as location
 import postprocess.svg
+import config.config as cfg
 
 
 def main():
-  filename = "fp1.png"
-  potrace_path = "potrace/exe/path/here"
-
-  io = location.generate_io_paths(filename)
-  location.generate_output_folder(filename)
+  # Read `config.json` and generate I/O paths
+  config: cfg.Config = cfg.read_config()
+  io = location.generate_io_paths(config.filename)
+  location.generate_output_folder(config.filename)
 
   clean.background.run(io, threshold_value=100)
-  postprocess.svg.trace(io, potrace_path)
+  postprocess.svg.trace(io, config.potrace_path)
 
 
 if __name__ == "__main__":
