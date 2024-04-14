@@ -1,11 +1,11 @@
 """
 NOTE
 - This script is not meant to be run using normal python interpreter.
-- Run this in using Blender's python interpreter.
+- Run this in Blender's python interpreter.
 - To open Blender's python interpreter, click on `Scripting` tab in Blender.
 """
 
-import bpy  # type: ignore
+import bpy
 
 
 # Delete all default objects
