@@ -2,15 +2,25 @@ import clean.background
 import config.config as cfg
 import config.location as location
 import postprocess.svg
+from config.config import Config
+from config.location import IO
+from process import edge, merge
+from utility import save
 
 
 def main():
   # Read `config.json` and generate I/O paths
-  config: cfg.Config = cfg.read_config()
+  config: Config = cfg.read_config()
   cfg.log_config(config)
-  io = location.generate_io_paths(config.filename)
+  io: IO = location.generate_io_paths(config.filename)
   location.generate_output_folder(config.filename)
 
+  # Vertex detection
+  vertices = edge.detect(io.input, io.raw_vertices)
+  merged_vertices = merge.close_vertices(io.input, io.merged_vertices, vertices, epsilon=12)
+  save.vertices_as_txt(io.coordinates, merged_vertices)
+
+  # Trace as SVG
   clean.background.run(io, config)
   postprocess.svg.trace(io, config)
 
