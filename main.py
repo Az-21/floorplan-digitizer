@@ -18,7 +18,7 @@ def main():
 
   # Vertex detection
   vertices = edge.detect(io, config)
-  merged_vertices = merge.close_vertices(io.input, io.merged_vertices, vertices, epsilon=12)
+  merged_vertices = merge.close_vertices(io, vertices, epsilon=12)
   save.vertices_as_txt(io.coordinates, merged_vertices)
 
   # Trace as SVG

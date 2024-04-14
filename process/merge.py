@@ -1,15 +1,12 @@
-"""
-Average out the coordinates of the image based on the pairwise distance
-"""
-
 import cv2
 import numpy as np
+from config.location import IO
 from . import color
 
 
-def preview_on_image(input, output, vertices):
+def preview_on_image(io: IO, vertices) -> None:
   # Read image
-  image = cv2.imread(input)
+  image = cv2.imread(io.input)
 
   # Ensure points are converted to integers for drawing
   vertices = np.array(vertices, dtype=np.int32)
@@ -19,11 +16,11 @@ def preview_on_image(input, output, vertices):
     cv2.circle(image, tuple(vertex), 1, color.MAGENTA, 3)
 
   # Save
-  cv2.imwrite(output, image)
+  cv2.imwrite(io.merged_vertices, image)
 
 
 def pairwise_distances(points):
-  n = len(points)
+  n: int = len(points)
   distances = np.zeros((n, n))
   for i in range(n):
     for j in range(i + 1, n):
@@ -33,8 +30,8 @@ def pairwise_distances(points):
   return distances
 
 
-def close_vertices(input, output, vertices, epsilon):
-  n = len(vertices)
+def close_vertices(io: IO, vertices, epsilon):
+  n: int = len(vertices)
   visited = set()
   merged_points = []
   for i in range(n):
@@ -50,5 +47,5 @@ def close_vertices(input, output, vertices, epsilon):
         visited.add(j)
     merged_points.append(np.mean(cluster, axis=0).tolist())
 
-  preview_on_image(input, output, merged_points)
+  preview_on_image(io, merged_points)
   return merged_points
