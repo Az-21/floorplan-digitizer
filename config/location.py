@@ -14,15 +14,16 @@ class IO:
 
 def generate_io_paths(filename):
   # Generate input path
-  input = f"input/{filename}"
+  input: str = f"input/{filename}"
 
   # Generate outputs | Always save as .PNG
+  base: str
   base, _ = os.path.splitext(filename)  # Discard extension
-  clean_background = f"output/{base}/clean-background.bmp"
-  clean_background_svg = f"output/{base}/clean-background.svg"
-  raw_vertices = f"output/{base}/raw-vertices.png"
-  merged_vertices = f"output/{base}/merged-vertices.png"
-  coordinates = f"output/{base}/vertex-coordinates.txt"
+  clean_background: str = f"output/{base}/clean-background.bmp"
+  clean_background_svg: str = f"output/{base}/clean-background.svg"
+  raw_vertices: str = f"output/{base}/raw-vertices.png"
+  merged_vertices: str = f"output/{base}/merged-vertices.png"
+  coordinates: str = f"output/{base}/vertex-coordinates.txt"
 
   # Return as object
   return IO(
@@ -35,8 +36,9 @@ def generate_io_paths(filename):
   )
 
 
-def generate_output_folder(filename):
+def generate_output_folder(filename) -> None:
+  base: str
   base, _ = os.path.splitext(filename)  # Discard extension
-  path = f"output/{base}"
+  path: str = f"output/{base}"
   if not os.path.exists(path):
     os.makedirs(path)
