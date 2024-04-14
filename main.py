@@ -7,6 +7,7 @@ import postprocess.svg
 def main():
   # Read `config.json` and generate I/O paths
   config: cfg.Config = cfg.read_config()
+  cfg.log_config(config)
   io = location.generate_io_paths(config.filename)
   location.generate_output_folder(config.filename)
 
