@@ -1,7 +1,7 @@
 import clean.background
+import config.config as cfg
 import config.location as location
 import postprocess.svg
-import config.config as cfg
 
 
 def main():
@@ -10,8 +10,8 @@ def main():
   io = location.generate_io_paths(config.filename)
   location.generate_output_folder(config.filename)
 
-  clean.background.run(io, threshold_value=100)
-  postprocess.svg.trace(io, config.potrace_path)
+  clean.background.run(io, config)
+  postprocess.svg.trace(io, config)
 
 
 if __name__ == "__main__":
