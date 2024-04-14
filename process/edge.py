@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from loguru import logger
 from config.config import Config
 from config.location import IO
 from . import color
@@ -58,6 +59,8 @@ def detect(
 
   # Save image
   cv2.imwrite(io.raw_vertices, result_image)
+  logger.info(f"Detected {len(vertices)} vertices in `{io.input}`")
+  logger.info(f"Saved overlay of detected vertices in `{io.raw_vertices}`")
 
   # Return list containing the coordinates of the vertices
   coordinates = []

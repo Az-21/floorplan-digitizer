@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from loguru import logger
 from config.config import Config
 from config.location import IO
 
@@ -21,3 +22,4 @@ def run(
   reduced_thickness = cv2.dilate(binary_image, kernel, iterations=config.thickness_reduction_iterations)
   increased_thickness = cv2.erode(reduced_thickness, kernel, iterations=config.thickness_increase_iterations)
   cv2.imwrite(io.clean_background, increased_thickness)
+  logger.info(f"Saved cleaned background in `{io.clean_background}`")

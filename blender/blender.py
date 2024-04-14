@@ -1,4 +1,5 @@
 import os
+from loguru import logger
 from config.location import IO
 
 
@@ -7,6 +8,7 @@ def generate_bpy_script(io: IO) -> None:
   template: str = _read_blender_script_template()
   template: str = template.replace("#SVG-PATH-PLACEHOLDER#", full_svg_path)
   _save_bpy_script(io, template)
+  logger.info(f"Saved Blender action script in `{io.blender_script}`\n")
 
 
 def _generate_full_svg_path(io: IO) -> str:

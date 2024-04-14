@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from loguru import logger
 from config.location import IO
 from . import color
 
@@ -17,6 +18,8 @@ def preview_on_image(io: IO, vertices) -> None:
 
   # Save
   cv2.imwrite(io.merged_vertices, image)
+  logger.info(f"Reduced count of vertices to {len(vertices)}")
+  logger.info(f"Saved overlay of merged vertices in `{io.merged_vertices}`")
 
 
 def pairwise_distances(points):
