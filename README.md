@@ -87,5 +87,17 @@ C:/Users/Username/miniforge3/envs/floorplan/python.exe .\main.py
 ### Input
 ![Input Image](https://ucarecdn.com/3e4865f0-9a3e-448d-a638-00ab611c1792/floorplaninput.jpeg)
 
+### Config Parameters
+`config.json` parameters used to process the sample input image. Different images with different resolutions and black levels will require different parameters.
+```json
+{
+  "threshold_value": 100,
+  "thickness_reduction_iterations": 5,
+  "thickness_increase_iterations": 3,
+}
+```
+> [!NOTE]
+> Lower resolution images will require fewer `thickness_reduction_iterations`. Setting this parameter too high will erase everything, producing a blank image.
+
 ### Output
 ![Output in Blender](https://ucarecdn.com/106fe2d6-6d94-44ed-809a-2bc1772207a9/floorplanoutput.jpeg)
