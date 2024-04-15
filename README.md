@@ -44,7 +44,7 @@ Extract the following external dependencies and copy the path of their executabl
 > The program is tested using Potrace `v1.16` and Typst `v0.11`. Future releases may introduce breaking changes.
 
 ### Configuration
-- Open `config/config.json` in `floorplan-digitizer`.
+- Open `config.json` in root of `floorplan-digitizer` project.
 - Set the `potrace_path` to the absolute path of `potrace.exe`.
 - Set the `typst_path` to the absolute path of `typst.exe`.
 
@@ -62,7 +62,7 @@ Extract the following external dependencies and copy the path of their executabl
 - Place floorplan image inside `input` folder.
 
 ### Configuration
-- Open `config/config.json` in `floorplan-digitizer`.
+- Open `config.json` in root of `floorplan-digitizer` project.
 - Set `filename` to the name of floorplan image to work upon (eg: `fp.png`).
 - [Optional] Change value of `threshold_value` to target darker shades. Increasing this value will allow lighter shades.
 - [Optional] Change value of `thickness` to change the thickness of walls.
