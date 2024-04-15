@@ -15,7 +15,7 @@ class Config:
 
 
 # Function to read config.json and return as Config object
-def read_config(path: str = "config/config.json") -> Config:
+def read_config(path: str = "config.json") -> Config:
   with open(path) as file:
     data = json.load(file)
     return Config(

@@ -1,12 +1,12 @@
-import blender.blender as blender
-import clean.background
-import config.config as cfg
-import config.location as location
-import postprocess.svg
-from config.config import Config
-from config.location import IO
-from process import edge, merge
-from utility import save
+import src.blender.blender as blender
+import src.clean.background
+import src.config.config as cfg
+import src.config.location as location
+import src.postprocess.svg
+from src.config.config import Config
+from src.config.location import IO
+from src.process import edge, merge
+from src.utility import save
 
 
 def main():
@@ -22,8 +22,8 @@ def main():
   save.vertices_as_txt(io.coordinates, merged_vertices)
 
   # Trace as SVG
-  clean.background.run(io, config)
-  postprocess.svg.trace(io, config)
+  src.clean.background.run(io, config)
+  src.postprocess.svg.trace(io, config)
 
   # Generate Blender action script
   blender.generate_bpy_script(io)

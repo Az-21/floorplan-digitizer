@@ -1,6 +1,6 @@
 import os
 from loguru import logger
-from config.location import IO
+from src.config.location import IO
 
 
 def generate_bpy_script(io: IO) -> None:
@@ -16,7 +16,7 @@ def _generate_full_svg_path(io: IO) -> str:
 
 
 def _read_blender_script_template() -> str:
-  with open("blender/blender_template.txt", "r") as file:
+  with open("src/blender/blender_template.txt", "r") as file:
     return file.read()
 
 

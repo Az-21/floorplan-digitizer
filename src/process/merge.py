@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from loguru import logger
-from config.location import IO
+from src.config.location import IO
 from . import color
 
 

@@ -1,7 +1,7 @@
 import subprocess
 from loguru import logger
-from config.config import Config
-from config.location import IO
+from src.config.config import Config
+from src.config.location import IO
 
 
 def trace(io: IO, config: Config) -> None:

@@ -3,6 +3,6 @@
   "threshold_value": 100,
   "thickness_reduction_iterations": 5,
   "thickness_increase_iterations": 3,
-  "potrace_path": "potrace/exe/path/here",
+  "potrace_path": "C:/Users/Az21/Work/Floorplan/Potrace/potrace.exe",
   "typst_path": "todo/implement/typst.exe"
 }
