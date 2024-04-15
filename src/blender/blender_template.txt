@@ -9,16 +9,7 @@ import bpy # type: ignore
 
 
 # Delete all default objects
-bpy.ops.object.select_all(action="DESELECT")
-bpy.ops.object.select_by_type(type="MESH")
-bpy.ops.object.delete()
-bpy.ops.object.select_by_type(type="CURVE")
-bpy.ops.object.delete()
-bpy.ops.object.select_by_type(type="LIGHT")
-bpy.ops.object.delete()
-bpy.ops.object.select_by_type(type="CAMERA")
-bpy.ops.object.delete()
-bpy.ops.object.select_by_type(type="CURVES")
+bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete()
 
 
