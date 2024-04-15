@@ -22,10 +22,8 @@ bpy.ops.object.select_by_type(type="CURVES")
 bpy.ops.object.delete()
 
 
-# Path floorplan SVG
-svg_path = r"#SVG-PATH-PLACEHOLDER#"
-
 # Import SVG file
+svg_path = r"#SVG-PATH-PLACEHOLDER#"
 bpy.ops.import_curve.svg(filepath=svg_path)
 
 # Merge curves into one curve
@@ -34,8 +32,7 @@ curves = [m for m in bpy.context.scene.objects if m.type == 'CURVE']
 
 for curve in curves:
     curve.select_set(state=True)
-    # Highlight (.join needs one curve highlighted)
-    bpy.context.view_layer.objects.active = curve
+    bpy.context.view_layer.objects.active = curve # .join() needs one curve highlighted
 
 bpy.ops.object.join()
 
