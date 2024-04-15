@@ -82,3 +82,10 @@ C:/Users/Username/miniforge3/envs/floorplan/python.exe .\main.py
 - The program will generate a `blender.py` script in `output` folder.
 - Copy-paste this script in the `Scripting` tab of Blender.
 - Run the script **in Blender** to generate 3D model of floorplan.
+
+## Sample I/O
+### Input
+![Input Image](https://ucarecdn.com/3e4865f0-9a3e-448d-a638-00ab611c1792/floorplaninput.jpeg)
+
+### Output
+![Output in Blender](https://ucarecdn.com/106fe2d6-6d94-44ed-809a-2bc1772207a9/floorplanoutput.jpeg)
