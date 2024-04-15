@@ -39,9 +39,10 @@ Extract the following external dependencies and copy the path of their executabl
 
 1. [Potrace](https://potrace.sourceforge.net/#downloading) to trace cleaned up floorplan images as scalable vector graphic.
 2. [Typst](https://github.com/typst/typst/releases/latest) to generate PDF with floorplan insights.
+3. [Blender](https://www.blender.org/download/) to view 3D floorplan.
 
 > [!NOTE]
-> The program is tested using Potrace `v1.16` and Typst `v0.11`. Future releases may introduce breaking changes.
+> The program is tested using Potrace `v1.16`, Typst `v0.11`, Blender `v4.1`. Future (and older) releases may introduce breaking changes.
 
 ### Configuration
 - Open `config.json` in root of `floorplan-digitizer` project.
