@@ -65,7 +65,7 @@ Extract the following external dependencies and copy the path of their executabl
 ### Configuration
 - Open `config.json` in root of `floorplan-digitizer` project.
 - Set `filename` to the name of floorplan image to work upon (eg: `fp.png`).
-- [Optional] Change value of `threshold_value` to target darker shades. Increasing this value will allow lighter shades.
+- [Optional] Change value of `threshold_value` to target darker shades.
 - [Optional] Change value of `thickness` to change the thickness of walls.
 
 ### Run
