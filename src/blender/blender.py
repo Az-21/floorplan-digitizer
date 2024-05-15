@@ -1,12 +1,17 @@
 import os
 from loguru import logger
 from src.config.location import IO
+from src.config.config import Config
 
 
-def generate_bpy_script(io: IO) -> None:
+def generate_bpy_script(io: IO, config: Config) -> None:
   full_svg_path: str = _generate_full_svg_path(io)
   template: str = _read_blender_script_template()
-  template: str = template.replace("#SVG-PATH-PLACEHOLDER#", full_svg_path)
+  template = (
+    template.replace("#SVG-PATH-PLACEHOLDER#", full_svg_path)
+    .replace("#SCALE-PLACEHOLDER#", str(config.scale))
+    .replace("#HEIGHT-PLACEHOLDER#", str(config.height))
+  )
   _save_bpy_script(io, template)
   logger.info(f"Saved Blender action script in `{io.blender_script}`\n")
 

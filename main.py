@@ -26,7 +26,7 @@ def main():
   src.postprocess.svg.trace(io, config)
 
   # Generate Blender action script
-  blender.generate_bpy_script(io)
+  blender.generate_bpy_script(io, config)
 
 
 if __name__ == "__main__":

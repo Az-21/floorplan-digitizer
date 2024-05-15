@@ -28,12 +28,12 @@ for curve in curves:
 bpy.ops.object.join()
 
 # Resize
-scale = 200
+scale = #SCALE-PLACEHOLDER#
 bpy.ops.transform.resize(value=(scale, scale, scale), orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', mirror=False, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False, snap=False, snap_elements={'INCREMENT'}, use_snap_project=False, snap_target='CLOSEST', use_snap_self=True, use_snap_edit=True, use_snap_nonedit=True, use_snap_selectable=False)
 
 # Remove material applied by default by Blender
 bpy.ops.object.material_slot_remove()
 
 # Extrude
-height = 0.02
+height = #HEIGHT-PLACEHOLDER#
 bpy.context.object.data.extrude = height
