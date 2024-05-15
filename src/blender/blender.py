@@ -17,7 +17,7 @@ def generate_bpy_script(io: IO, config: Config) -> None:
 
 
 def _generate_full_svg_path(io: IO) -> str:
-  return os.path.abspath(io.clean_background_svg)
+  return os.path.abspath(io.svg)
 
 
 def _read_blender_script_template() -> str:

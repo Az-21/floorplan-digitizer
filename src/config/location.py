@@ -7,7 +7,7 @@ class IO:
   input: str
   clean_background: str
   cropped: str
-  clean_background_svg: str
+  svg: str
   blender_script: str
   raw_vertices: str
   merged_vertices: str
@@ -26,9 +26,9 @@ def generate_io_paths(filename):
   # Generate outputs | Always save as .PNG
   base: str
   base, _ = os.path.splitext(filename)  # Discard extension
-  clean_background: str = f"output/{base}/{IMAGE}/clean-background.bmp"
-  cropped: str = f"output/{base}/{IMAGE}/cropped.png"
-  clean_background_svg: str = f"output/{base}/{IMAGE}/clean-background.svg"
+  clean_background: str = f"output/{base}/{IMAGE}/clean-backgroud.png"
+  cropped: str = f"output/{base}/{IMAGE}/cropped.bmp"  # Potrace requires BMP image format
+  svg: str = f"output/{base}/{IMAGE}/cropped.svg"
   blender_script: str = f"output/{base}/blender.py"
   raw_vertices: str = f"output/{base}/{IMAGE}/raw-vertices.png"
   merged_vertices: str = f"output/{base}/{IMAGE}/merged-vertices.png"
@@ -39,7 +39,7 @@ def generate_io_paths(filename):
     input,
     clean_background,
     cropped,
-    clean_background_svg,
+    svg,
     blender_script,
     raw_vertices,
     merged_vertices,
