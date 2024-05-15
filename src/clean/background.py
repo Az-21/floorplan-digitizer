@@ -1,6 +1,8 @@
+import sys
 import cv2
 import numpy as np
 from loguru import logger
+from src.check.blank import is_image_blank
 from src.config.config import Config
 from src.config.location import IO
 
@@ -23,3 +25,8 @@ def run(
   increased_thickness = cv2.erode(reduced_thickness, kernel, iterations=config.thickness_increase_iterations)
   cv2.imwrite(io.clean_background, increased_thickness)
   logger.info(f"Saved cleaned background in `{io.clean_background}`")
+
+  # Check if the image is blank to prevent errors in the cropping process
+  if is_image_blank(io):
+    logger.error("Blank image detected. Reduce the threshold and/or thickness reduction iterations.")
+    sys.exit()
