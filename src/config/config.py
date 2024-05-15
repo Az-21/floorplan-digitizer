@@ -12,6 +12,8 @@ class Config:
   thickness_increase_iterations: int
   potrace_path: str
   typst_path: str
+  scale: int
+  height: float
 
 
 # Function to read config.json and return as Config object
@@ -25,6 +27,8 @@ def read_config(path: str = "config.json") -> Config:
       data["thickness_increase_iterations"],
       data["potrace_path"],
       data["typst_path"],
+      data["scale"],
+      data["height"],
     )
 
 
