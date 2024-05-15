@@ -6,6 +6,7 @@ from dataclasses import dataclass
 class IO:
   input: str
   clean_background: str
+  cropped: str
   clean_background_svg: str
   blender_script: str
   raw_vertices: str
@@ -26,6 +27,7 @@ def generate_io_paths(filename):
   base: str
   base, _ = os.path.splitext(filename)  # Discard extension
   clean_background: str = f"output/{base}/{IMAGE}/clean-background.bmp"
+  cropped: str = f"output/{base}/{IMAGE}/cropped.png"
   clean_background_svg: str = f"output/{base}/{IMAGE}/clean-background.svg"
   blender_script: str = f"output/{base}/blender.py"
   raw_vertices: str = f"output/{base}/{IMAGE}/raw-vertices.png"
@@ -36,6 +38,7 @@ def generate_io_paths(filename):
   return IO(
     input,
     clean_background,
+    cropped,
     clean_background_svg,
     blender_script,
     raw_vertices,

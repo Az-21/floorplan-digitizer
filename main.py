@@ -1,5 +1,6 @@
 import src.blender.blender as blender
 import src.clean.background
+import src.clean.crop
 import src.config.config as cfg
 import src.config.location as location
 import src.postprocess.svg
@@ -21,8 +22,11 @@ def main():
   merged_vertices = merge.close_vertices(io, vertices, epsilon=12)
   save.vertices_as_txt(io.coordinates, merged_vertices)
 
-  # Trace as SVG
+  # Cleanup
   src.clean.background.run(io, config)
+  src.clean.crop.padding(io)
+
+  # Trace as SVG and generate Blender action script
   src.postprocess.svg.trace(io, config)
 
   # Generate Blender action script
