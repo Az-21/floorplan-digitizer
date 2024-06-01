@@ -3,6 +3,7 @@ import src.clean.background
 import src.clean.crop
 import src.config.config as cfg
 import src.config.location as location
+import src.documentation.typst as typst
 import src.postprocess.svg
 from src.config.config import Config
 from src.config.location import IO
@@ -33,6 +34,9 @@ def main() -> None:
 
   # Generate Blender action script
   blender.generate_bpy_script(io, config)
+
+  # Generate Typst document
+  typst.generate_typst_document(io, config, VERSION)
 
 
 if __name__ == "__main__":
