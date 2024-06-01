@@ -13,7 +13,7 @@ def generate_bpy_script(io: IO, config: Config) -> None:
     .replace("#HEIGHT-PLACEHOLDER#", str(config.height))
   )
   _save_bpy_script(io, template)
-  logger.info(f"Saved Blender action script in `{io.blender_script}`\n")
+  logger.info(f"Saved Blender action script in `{io.blender_script}`")
 
 
 def _generate_full_svg_path(io: IO) -> str:
