@@ -14,4 +14,5 @@ def padding(io: IO) -> None:
 
   # Crop and save
   cropped = img[y : y + h, x : x + w]
-  cv2.imwrite(io.cropped, cropped)
+  cv2.imwrite(io.cropped, cropped)  # Save as BMP (for Potrace)
+  cv2.imwrite(io.cropped_copy, cropped)  # Save as PNG
