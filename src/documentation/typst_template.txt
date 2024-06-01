@@ -1,0 +1,108 @@
+/// Page Style
+#set text(12pt, lang: "en")
+#show math.equation: set text(font: "New Computer Modern Math")
+#show raw: text.with(font: "JetBrains Mono")
+#set page(
+  paper: "a4",
+  margin: auto,
+  numbering: "1",
+  number-align: center,
+)
+#set heading(numbering: "1.1.1.1 ")
+#set list(indent: 16pt)
+#set enum(numbering: "1.", indent: 16pt)
+#show raw.where(block: true): block.with(
+  fill: rgb("f0f0f0"),
+  inset: 10pt,
+  radius: 2pt,
+  width: 100%
+)
+#show raw.where(block: false): box.with(
+  fill: rgb("c0f77e"),
+  inset: (x: 3pt, y: 0pt),
+  outset: (y: 3pt),
+  radius: 2pt,
+)
+#show link: underline
+
+/// Content
+= Floorplan Documentation
+- Made using #link("https://github.com/Az-21/floorplan-digitizer")[Az-21/floorplan-digitizer]
+
+- Compiled on version `#VERSION-PLACEHOLDER#`
+- Compiled at #TIME-PLACEHOLDER# on #DATE-PLACEHOLDER#
+
+= Configuration
+== Image Parameters
+#table(
+  columns: (1fr,1fr),
+  stroke: none,
+  table.hline(),
+  table.header([Property], [Value]),
+  table.hline(),
+  [Filename], [`#FILENAME-PLACEHOLDER#`],
+  [Threshold], [$#THRESHOLD-PLACEHOLDER#$],
+  [Thickness Reduction Iterations], [$#TRI-PLACEHOLDER#$],
+  [Thickness Increase Iterations], [$#TII-PLACEHOLDER#$],
+  [Scale], [$#SCALE-PLACEHOLDER#$],
+  [Height], [$#HEIGHT-PLACEHOLDER#$],
+  table.hline(),
+)
+
+#pagebreak()
+= Processing Pipeline
+== Image Preprocessing
+
+#table(
+  columns: (1fr,1fr),
+  stroke: none,
+  table.hline(),
+  table.header([Dimension], [Value]),
+  table.hline(),
+  [Width], [$#IMAGE-WIDTH-PLACEHOLDER#$ px],
+  [Height], [$#IMAGE-HEIGHT-PLACEHOLDER#$ px],
+  table.hline(),
+)
+#figure(
+  rect(image("input.png")),
+  caption: [Input image]
+)
+
+#pagebreak()
+#figure(
+  rect(image("raw-vertices.png")),
+  caption: [Vertices detected]
+)
+
+#figure(
+  rect(image("merged-vertices.png")),
+  caption: [Simplified/merged vertices]
+)
+
+#figure(
+  rect(image("clean-background.png")),
+  caption: [Cleaned background]
+)
+
+#figure(
+  rect(image("cropped.png")),
+  caption: [Cropped whitespace]
+)
+
+#pagebreak()
+== Vertex Coordinates
+```py
+#VERTEX-LIST-PLACEHOLDER#
+```
+
+#pagebreak()
+== Scalable Vector Graphic
+```svg
+#SVG-PLACEHOLDER#
+```
+
+#pagebreak()
+== Blender Script
+```py
+#BLENDER-SCRIPT-PLACEHOLDER#
+```
