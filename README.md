@@ -71,7 +71,7 @@ Extract the following external dependencies and copy the path of their executabl
 ### Run
 Open terminal in the root of `floorplan-digitizer` and run the following command.
 ```sh
-C:/Users/Username/miniforge3/envs/floorplan/python.exe .\main.py
+C:/Users/Username/miniforge3/envs/floorplan/python.exe ./main.py
 #          ^ Replace this with your username
 ```
 
