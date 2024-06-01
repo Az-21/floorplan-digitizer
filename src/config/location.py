@@ -8,6 +8,7 @@ class IO:
   input_copy: str
   clean_background: str
   cropped: str
+  cropped_copy: str
   svg: str
   blender_script: str
   typst_script: str
@@ -31,6 +32,7 @@ def generate_io_paths(filename):
   input_copy: str = f"output/{base}/{IMAGE}/input.png"
   clean_background: str = f"output/{base}/{IMAGE}/clean-background.png"
   cropped: str = f"output/{base}/{IMAGE}/cropped.bmp"  # Potrace requires BMP image format
+  cropped_copy: str = f"output/{base}/{IMAGE}/cropped.png"
   svg: str = f"output/{base}/{IMAGE}/cropped.svg"
   blender_script: str = f"output/{base}/blender.py"
   typst_script: str = f"output/{base}/{IMAGE}/typst.typ"
@@ -44,6 +46,7 @@ def generate_io_paths(filename):
     input_copy,
     clean_background,
     cropped,
+    cropped_copy,
     svg,
     blender_script,
     typst_script,
