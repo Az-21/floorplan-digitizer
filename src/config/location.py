@@ -9,6 +9,7 @@ class IO:
   cropped: str
   svg: str
   blender_script: str
+  typst_script: str
   raw_vertices: str
   merged_vertices: str
   coordinates: str
@@ -30,6 +31,7 @@ def generate_io_paths(filename):
   cropped: str = f"output/{base}/{IMAGE}/cropped.bmp"  # Potrace requires BMP image format
   svg: str = f"output/{base}/{IMAGE}/cropped.svg"
   blender_script: str = f"output/{base}/blender.py"
+  typst_script: str = f"output/{base}/{IMAGE}/typst.typ"
   raw_vertices: str = f"output/{base}/{IMAGE}/raw-vertices.png"
   merged_vertices: str = f"output/{base}/{IMAGE}/merged-vertices.png"
   coordinates: str = f"output/{base}/{DATA}/vertex-coordinates.txt"
@@ -41,6 +43,7 @@ def generate_io_paths(filename):
     cropped,
     svg,
     blender_script,
+    typst_script,
     raw_vertices,
     merged_vertices,
     coordinates,
