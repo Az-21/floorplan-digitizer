@@ -4,7 +4,7 @@
   "thickness_reduction_iterations": 5,
   "thickness_increase_iterations": 3,
   "potrace_path": "potrace/exe/path/here",
-  "typst_path": "todo/implement/typst.exe",
+  "typst_path": "typst/exe/path/here",
   "scale": 200,
   "height": 0.02
 }
