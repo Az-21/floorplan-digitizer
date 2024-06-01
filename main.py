@@ -11,6 +11,8 @@ from src.utility import save
 
 
 def main() -> None:
+  VERSION: str = "0.9.0"
+
   # Read `config.json` and generate I/O paths
   config: Config = cfg.read_config()
   cfg.log_config(config)
