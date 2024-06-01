@@ -29,7 +29,7 @@ def generate_io_paths(filename):
   base: str
   base, _ = os.path.splitext(filename)  # Discard extension
   input_copy: str = f"output/{base}/{IMAGE}/input.png"
-  clean_background: str = f"output/{base}/{IMAGE}/clean-backgroud.png"
+  clean_background: str = f"output/{base}/{IMAGE}/clean-background.png"
   cropped: str = f"output/{base}/{IMAGE}/cropped.bmp"  # Potrace requires BMP image format
   svg: str = f"output/{base}/{IMAGE}/cropped.svg"
   blender_script: str = f"output/{base}/blender.py"
