@@ -10,7 +10,7 @@ from src.process import edge, merge
 from src.utility import save
 
 
-def main():
+def main() -> None:
   # Read `config.json` and generate I/O paths
   config: Config = cfg.read_config()
   cfg.log_config(config)
