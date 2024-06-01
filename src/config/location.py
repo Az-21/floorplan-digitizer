@@ -5,6 +5,7 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class IO:
   input: str
+  input_copy: str
   clean_background: str
   cropped: str
   svg: str
@@ -27,6 +28,7 @@ def generate_io_paths(filename):
   # Generate outputs | Always save as .PNG
   base: str
   base, _ = os.path.splitext(filename)  # Discard extension
+  input_copy: str = f"output/{base}/{IMAGE}/input.png"
   clean_background: str = f"output/{base}/{IMAGE}/clean-backgroud.png"
   cropped: str = f"output/{base}/{IMAGE}/cropped.bmp"  # Potrace requires BMP image format
   svg: str = f"output/{base}/{IMAGE}/cropped.svg"
@@ -39,6 +41,7 @@ def generate_io_paths(filename):
   # Return as object
   return IO(
     input,
+    input_copy,
     clean_background,
     cropped,
     svg,
