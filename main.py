@@ -1,3 +1,23 @@
+"""
+This module serves as the main entry point for the application. It handles configuration reading,
+vertex detection, image cleanup, SVG tracing, Blender script generation, and Typst document creation.
+
+Modules:
+- `blender`: Handles Blender script generation.
+- `clean.background`: Handles background cleaning.
+- `clean.crop`: Handles image cropping.
+- `config.config`: Handles configuration reading and logging.
+- `config.location`: Handles I/O path generation.
+- `documentation.typst`: Handles Typst document generation.
+- `postprocess.svg`: Handles SVG tracing.
+- `process.edge`: Handles edge detection and vertex extraction.
+- `process.merge`: Handles merging of close vertices.
+- `utility.save`: Handles saving of vertices to a text file.
+
+Functions:
+- `main()`: Orchestrates the overall workflow of the application.
+"""
+
 import src.blender.blender as blender
 import src.clean.background
 import src.clean.crop
@@ -12,6 +32,24 @@ from src.utility import save
 
 
 def main() -> None:
+  """
+  Main function that orchestrates the workflow of the application.
+
+  The function performs the following steps:
+  1. Reads the configuration from `config.json`.
+  2. Logs the configuration.
+  3. Generates I/O paths based on the configuration filename.
+  4. Creates the necessary output directories.
+  5. Detects vertices in the input image.
+  6. Merges close vertices.
+  7. Saves the merged vertices to a text file.
+  8. Runs background cleaning and image cropping.
+  9. Traces the cleaned image to SVG format.
+  10. Generates a Blender action script.
+  11. Generates a Typst document.
+
+  The version of the application is logged and used in the Typst document generation.
+  """
   VERSION: str = "0.9.0"
 
   # Read `config.json` and generate I/O paths
