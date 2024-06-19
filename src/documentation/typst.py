@@ -25,6 +25,7 @@ Functions:
 
 import os
 import shutil
+import subprocess
 from datetime import datetime
 import cv2
 from loguru import logger
@@ -77,7 +78,9 @@ def generate_typst_document(io: IO, config: Config, version: str) -> None:
 
   shutil.copyfile(io.input, io.input_copy)  # Typst cannot read from parent directory, so a copy is made
   _save_typst_script(io, template)
-  logger.info(f"Saved Typst document in `{io.typst_script}`\n")
+  logger.info(f"Saved Typst document in `{io.typst_script}")
+  subprocess.run([config.typst_path, "compile", io.typst_script], capture_output=True)
+  logger.info("Compiled Typst document\n")
 
 
 def _read_typst_script_template() -> str:
